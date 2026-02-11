@@ -1,1 +1,13 @@
-./db_data
+# Mengabaikan folder bin dan obj di dalam folder app
+app/bin/
+app/obj/
+
+# Mengabaikan data volume database Docker agar tidak masuk Git
+db_data/
+
+# Mengabaikan file konfigurasi yang berisi password/connection string
+app/appsettings.json
+app/appsettings.Development.json
+
+# Tooling
+app/.config/

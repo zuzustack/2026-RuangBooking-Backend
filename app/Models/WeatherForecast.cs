@@ -1,7 +1,9 @@
-namespace RuangBooking;
+namespace RuangBooking.Models;
 
 public class WeatherForecast
 {
+    public int Id { get; set; } // Primary key for the database
+
     public DateOnly Date { get; set; }
 
     public int TemperatureC { get; set; }

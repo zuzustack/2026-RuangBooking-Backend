@@ -1,6 +1,0 @@
-@RuangBooking_HostAddress = http://localhost:5197
-
-GET {{RuangBooking_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
