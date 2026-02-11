@@ -7,6 +7,9 @@ public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
-    // Daftarkan model WeatherForecast agar jadi tabel di MySQL
-    public DbSet<WeatherForecast> Forecasts { get; set; }
+    
+    public DbSet<Room> Rooms { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<BookRoom> BookedRooms { get; set; }
+
 }
