@@ -1,0 +1,29 @@
+services:
+  web:
+    image: mcr.microsoft.com/dotnet/sdk:9.0
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    command: ["dotnet", "run", "--urls", "http://0.0.0.0:80"]
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - db_mysql
+
+
+  db_mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: appdotnet
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
