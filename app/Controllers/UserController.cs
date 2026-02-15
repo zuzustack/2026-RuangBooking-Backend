@@ -36,12 +36,31 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("register", Name = "RegisterUser")]
-    public IActionResult Post(User user)
+    public IActionResult Register(UserRegisterRequest user)
     {
+        // check if username already exists
+        if (_context.Users.Any(u => u.Username == user.Username))
+        {
+            return BadRequest(new { message = "Username already exists" });
+        }
+
+
         user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-        _context.Users.Add(user);
+
+        if (string.IsNullOrEmpty(user.Role))
+        {
+            user.Role = "User";
+        }
+
+        var newUser = new User
+        {
+            Username = user.Username,
+            Password = user.Password,
+            Role = user.Role
+        };
+        _context.Users.Add(newUser);
         _context.SaveChanges();
-        return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
+        return Ok(newUser);
     }
 
     [HttpPost("login", Name = "LoginUser")]
