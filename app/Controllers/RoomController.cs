@@ -20,7 +20,7 @@ public class RoomController : ControllerBase
     public IActionResult Get()
     {
         var rooms = _context.Rooms.Where(r => !r.IsDeleted).ToList();
-        return Ok(rooms);
+        return Ok(new { data = rooms });
     }
 
     [HttpGet("{id}", Name = "GetRoomById")]

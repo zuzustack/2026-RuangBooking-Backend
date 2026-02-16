@@ -4,7 +4,7 @@ public class BookRoom
 {
     public int Id { get; set; } // Primary key for the database
 
-    public int RoomId { get; set; }
+    public int RoomId { get; set; } 
 
     public int BookedBy { get; set; }
 
